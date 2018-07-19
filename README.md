@@ -56,6 +56,13 @@ In addition we have developed a web interface that enables one to use the
 * [Additional Information](#additional-information)
 
 
+## Please support this work
+
+If you make use of this package, please cite the following publication to be able to keep the package up to date:
+
+> Haunsberger SJ, Connolly NMC and Prehn JHM* (2016). “miRNAmeConverter: an R/Bioconductor package for translating mature miRNA names to different miRBase versions.” Bioinformatics. doi: [10.1093/bioinformatics/btw660](https://academic.oup.com/bioinformatics/article/33/4/592/2606064)
+
+
   
 ## Introduction
 
@@ -140,7 +147,7 @@ the miRNAmeConverter package are methods of that class.
 All methods can be displayed by
 
 ```r
-ls("package:miRNAmeConverter");
+ls("package:miRNAmeConverter")
 ```
 
 ```
@@ -154,7 +161,7 @@ ls("package:miRNAmeConverter");
 The slot names (attributes) of the class can be displayed by
 
 ```r
-slotNames("MiRNANameConverter");
+slotNames("MiRNANameConverter")
 ```
 
 ```
@@ -166,7 +173,7 @@ An instance of the `MiRNANameConverter` class can be created by calling the
 `MiRNANameConverter` function:
 
 ```r
-MiRNANameConverter();
+MiRNANameConverter()
 ```
 
 ```
@@ -191,20 +198,20 @@ are or were listed in any miRBase version. Our `miRNAs` have the following
 values:
 
 ```r
-miRNAs = c("hsa-miR-422b", "mmu-mir-872", "gra-miR157b", "cel-miR-56*");
+miRNAs = c("hsa-miR-422b", "mmu-mir-872", "gra-miR157b", "cel-miR-56*")
 ```
 Our first step is to create an instance of the `MiRNANameConverter` class by 
 calling the constructor and saving it to the
 variable `nc`.
 
 ```r
-nc = MiRNANameConverter();
+nc = MiRNANameConverter()
 ```
 Now we check if the names are valid names listed in any of the provided miRBase 
 versions:
 
 ```r
-checkMiRNAName(nc, miRNAs);
+checkMiRNAName(nc, miRNAs)
 ```
 
 ```
@@ -218,9 +225,9 @@ The following set of miRNA names contains valid as well as invalid names.
 
 ```r
 # "RNU-6" and "bpcv1-miR-B23" are not valid
-miRNAs = c("hsa-miR-422b", "RNU-6", "mmu-miR-872", "gra-miR157b", "bpcv1-miR-B23", "bpcv1-miR-B1");
-nc = MiRNANameConverter();    # Create MiRNANameConverter object
-checkMiRNAName(nc, miRNAs);   # check names
+miRNAs = c("hsa-miR-422b", "RNU-6", "mmu-miR-872", "gra-miR157b", "bpcv1-miR-B23", "bpcv1-miR-B1")
+nc = MiRNANameConverter()    # Create MiRNANameConverter object
+checkMiRNAName(nc, miRNAs)   # check names
 ```
 
 ```
@@ -247,8 +254,8 @@ by default.
 
 ```r
 miRNA.paper = "hsa-miR-422b";
-nc = MiRNANameConverter();             # Create MiRNANameConverter object
-translateMiRNAName(nc, miRNA.paper);   # Translate miRNA names
+nc = MiRNANameConverter()             # Create MiRNANameConverter object
+translateMiRNAName(nc, miRNA.paper)   # Translate miRNA names
 ```
 
 ```
@@ -266,14 +273,14 @@ respective console output and the entry in the attribute `description`.
 
 ```r
 miRNAs = c("hsa-miR-128b", "hsa-miR-213", "mmu-miR-302b*", 
-           "mmu-miR-872", "ebv-miR-BART5", "bpcv1-miR-B23");
-nc = MiRNANameConverter();              # Create MiRNANameConverter object
-result = translateMiRNAName(            # Translate names
+           "mmu-miR-872", "ebv-miR-BART5", "bpcv1-miR-B23")
+nc = MiRNANameConverter()              # Create MiRNANameConverter object
+result = translateMiRNAName(           # Translate names
                             nc
                             ,miRNAs
                             ,sequenceFormat = 1
                             ,versions = c(8, 8.1, 18, 21)
-                            );        
+                            )        
 ```
 
 ```
@@ -288,7 +295,7 @@ The console output shows us that one of the input values is not a miRNA
 (`"hsa-miR-128b"`).
 
 ```r
-result;
+result
 ```
 
 ```
@@ -312,7 +319,7 @@ provides information about every single input value and can be accessed via
 the `attr` command followed by `'description'`.
 
 ```r
-attr(result, 'description');
+attr(result, 'description')
 ```
 
 ```
@@ -339,7 +346,7 @@ miRBase versions. In such a case all we have to do is checking out the
 `sequence` attribute of our translation result.
 
 ```r
-attr(result, 'sequence');
+attr(result, 'sequence')
 ```
 
 ```
@@ -371,7 +378,7 @@ result = translateMiRNAName(            # Translate names
                             ,miRNAs
                             ,sequenceFormat = 2
                             ,versions = c(17, 19, 21)
-                            );
+                            )
 ```
 
 ```
@@ -382,7 +389,7 @@ result = translateMiRNAName(            # Translate names
 ```
 
 ```r
-attr(result, 'sequence');
+attr(result, 'sequence')
 ```
 
 ```
@@ -436,8 +443,8 @@ provided `example-miRNAs`-dataset.
 
 
 ```r
-nc = MiRNANameConverter();             # Create MiRNANameConverter object
-assessVersion(nc, example.miRNAs);     # Assess most likely miRBase version
+nc = MiRNANameConverter()             # Create MiRNANameConverter object
+assessVersion(nc, example.miRNAs)     # Assess most likely miRBase version
 ```
 
 ```
@@ -490,7 +497,7 @@ Sometimes it is useful to save a variable to a file. Taking the translation
 settings:
 
 ```r
-saveResults(nc, result);
+saveResults(nc, result)
 ```
 Three files will be saved, the miRNA name translation result, the description 
 and sequence. By default the files are tab-separated files without the parameter 
@@ -503,7 +510,7 @@ the `utils::write.table` function.
 #### Database information
 
 The data used in the _miRNAmeConverter_ package is obtained from the 
-`miRBaseVersions.db` annotation package [@mirbaseversionscite].
+[`miRBaseVersions.db`](https://github.com/StefanHaunsberger/mirbaseversions.db) annotation package.
 
 ## References {-}
 
