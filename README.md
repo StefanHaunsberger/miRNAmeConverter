@@ -43,7 +43,7 @@ challenges of mature miRNAs.
 
 In addition we have developed a web interface that enables one to use the 
 `translateMiRNAName` function via web interface and is based on shiny 
-([miRNAmeConverter-web](http://www.systemsmedicineireland.ie/tools/mirna-name-converter/)).
+<a href="http://www.systemsmedicineireland.ie/tools/mirna-name-converter/" target="_blank">miRNAmeConverter-web</a>.
 
 
 * [Introduction](#introduction)
@@ -58,10 +58,9 @@ In addition we have developed a web interface that enables one to use the
 
 ## Please support this work
 
-If you make use of this package, please cite the following publication to be able to keep the package up to date:
+If you make use of this package, please cite the following 'OpenAccess' publication to allow us to keep the package up to date:
 
-> Haunsberger SJ, Connolly NMC and Prehn JHM* (2016). “miRNAmeConverter: an R/Bioconductor package for translating mature miRNA names to different miRBase versions.” Bioinformatics. doi: [10.1093/bioinformatics/btw660](https://academic.oup.com/bioinformatics/article/33/4/592/2606064)
-
+> Haunsberger SJ, Connolly NMC and Prehn JHM* (2016). “miRNAmeConverter: an R/Bioconductor package for translating mature miRNA names to different miRBase versions.” Bioinformatics. doi: <a href="https://academic.oup.com/bioinformatics/article/33/4/592/2606064" target="_blank">10.1093/bioinformatics/btw660</a>.
 
   
 ## Introduction
@@ -91,42 +90,7 @@ miRNAmeConverter package just run the following command:
 
 
 ```r
-library(miRNAmeConverter)
-```
-
-```
-## Loading required package: miRBaseVersions.db
-```
-
-#### Citing miRNAmeConverter
-To give the authors professional credit for their work, please try to cite the
-publication when you use the miRNAmeConverter:
-
-
-```r
-citation("miRNAmeConverter")
-```
-
-```
-## 
-## Please cite the paper below for the miRNAmeConverter software
-## itself. Please also try to cite the miRBase database.
-## 
-##   Haunsberger, S.J., Connolly N.M.C., Prehn, J.H.M., (2016).
-##   miRNAmeConverter: an R/Bioconductor package for translating
-##   mature miRNA names to different miRBase versions.
-##   Bioinformatics. doi: 10.1093/bioinformatics/btw660
-## 
-## A BibTeX entry for LaTeX users is
-## 
-##   @Article{,
-##     author = {Stefan J Haunsberger and Niamh M C Connolly and Jochen H M Prehn},
-##     title = {{miRNAmeConverter}: an R/Bioconductor package for translating mature miRNA names to different miRBase versions},
-##     journal = {Bioinformatics},
-##     year = {2016},
-##     doi = {10.1093/bioinformatics/btw660},
-##     url = {https://doi.org/10.1093/bioinformatics/btw660},
-##   }
+> library(miRNAmeConverter)
 ```
 
 ## miRNA name input values
@@ -147,7 +111,7 @@ the miRNAmeConverter package are methods of that class.
 All methods can be displayed by
 
 ```r
-ls("package:miRNAmeConverter")
+> ls("package:miRNAmeConverter")
 ```
 
 ```
@@ -161,28 +125,22 @@ ls("package:miRNAmeConverter")
 The slot names (attributes) of the class can be displayed by
 
 ```r
-slotNames("MiRNANameConverter")
-```
-
-```
-## [1] ".dbconn"         ".currentVersion" ".validVersions"  ".nOrganisms"    
-## [5] ".nTotalEntries"  ".validOrganisms"
+> slotNames("MiRNANameConverter")
+[1] ".dbconn"         ".currentVersion" ".validVersions"  ".nOrganisms"    
+[5] ".nTotalEntries"  ".validOrganisms"
 ```
 
 An instance of the `MiRNANameConverter` class can be created by calling the 
 `MiRNANameConverter` function:
 
 ```r
-MiRNANameConverter()
-```
-
-```
-## An object of class: MiRNANameConverter
-## - Most recent miRBase version provided in the package:[1] 22
-## - Valid miRBase versions:  [1] 22.0 21.0 20.0 19.0 18.0 17.0 16.0 15.0 14.0 13.0 12.0 11.0 10.1 10.0
-## [15]  9.2  9.1  9.0  8.2  8.1  8.0  7.1  6.0
-## - Number of species: [1] 277
-## - Number of database entries among all versions: [1] 291613
+> MiRNANameConverter()
+An object of class: MiRNANameConverter
+- Most recent miRBase version provided in the package:[1] 22
+- Valid miRBase versions:  [1] 22.0 21.0 20.0 19.0 18.0 17.0 16.0 15.0 14.0 13.0 12.0 11.0 10.1 10.0
+[15]  9.2  9.1  9.0  8.2  8.1  8.0  7.1  6.0
+- Number of species: [1] 277
+- Number of database entries among all versions: [1] 291613
 ```
 
 
@@ -198,24 +156,21 @@ are or were listed in any miRBase version. Our `miRNAs` have the following
 values:
 
 ```r
-miRNAs = c("hsa-miR-422b", "mmu-mir-872", "gra-miR157b", "cel-miR-56*")
+> miRNAs = c("hsa-miR-422b", "mmu-mir-872", "gra-miR157b", "cel-miR-56*")
 ```
 Our first step is to create an instance of the `MiRNANameConverter` class by 
 calling the constructor and saving it to the
 variable `nc`.
 
 ```r
-nc = MiRNANameConverter()
+> nc = MiRNANameConverter()
 ```
 Now we check if the names are valid names listed in any of the provided miRBase 
 versions:
 
 ```r
-checkMiRNAName(nc, miRNAs)
-```
-
-```
-## [1] "hsa-miR-422b" "mmu-mir-872"  "gra-miR157b"  "cel-miR-56*"
+> checkMiRNAName(nc, miRNAs)
+[1] "hsa-miR-422b" "mmu-mir-872"  "gra-miR157b"  "cel-miR-56*"
 ```
 
 #### Mixed input values
@@ -225,15 +180,12 @@ The following set of miRNA names contains valid as well as invalid names.
 
 ```r
 # "RNU-6" and "bpcv1-miR-B23" are not valid
-miRNAs = c("hsa-miR-422b", "RNU-6", "mmu-miR-872", "gra-miR157b", "bpcv1-miR-B23", "bpcv1-miR-B1")
-nc = MiRNANameConverter()    # Create MiRNANameConverter object
-checkMiRNAName(nc, miRNAs)   # check names
-```
-
-```
-## 	The following miRNAs are not listed in the miRBase repository:
-## RNU-6; bpcv1-miR-B23
-## [1] "hsa-miR-422b" "mmu-miR-872"  "gra-miR157b"  "bpcv1-miR-B1"
+> miRNAs = c("hsa-miR-422b", "RNU-6", "mmu-miR-872", "gra-miR157b", "bpcv1-miR-B23", "bpcv1-miR-B1")
+> nc = MiRNANameConverter()    # Create MiRNANameConverter object
+> checkMiRNAName(nc, miRNAs)   # check names
+The following miRNAs are not listed in the miRBase repository:
+RNU-6; bpcv1-miR-B23
+[1] "hsa-miR-422b" "mmu-miR-872"  "gra-miR157b"  "bpcv1-miR-B1"
 ```
 This time the function prints information for the features that did not pass 
 the check and therefore are not included in the return value.
@@ -253,14 +205,11 @@ version. With no given version the function returns the miRBase version 21
 by default.
 
 ```r
-miRNA.paper = "hsa-miR-422b";
-nc = MiRNANameConverter()             # Create MiRNANameConverter object
-translateMiRNAName(nc, miRNA.paper)   # Translate miRNA names
-```
-
-```
-##                     mimat        input           v22.0
-## MIMAT0000732 MIMAT0000732 hsa-miR-422b hsa-miR-378a-3p
+> miRNA.paper = "hsa-miR-422b";
+> nc = MiRNANameConverter()             # Create MiRNANameConverter object
+> translateMiRNAName(nc, miRNA.paper)   # Translate miRNA names
+                   mimat        input           v22.0
+MIMAT0000732 MIMAT0000732 hsa-miR-422b hsa-miR-378a-3p
 ```
 
 The result shows that these two miRNAs are actually the same. This is because 
@@ -272,22 +221,19 @@ Another example with more diverse input names is shown below, with the
 respective console output and the entry in the attribute `description`.
 
 ```r
-miRNAs = c("hsa-miR-128b", "hsa-miR-213", "mmu-miR-302b*", 
-           "mmu-miR-872", "ebv-miR-BART5", "bpcv1-miR-B23")
-nc = MiRNANameConverter()              # Create MiRNANameConverter object
-result = translateMiRNAName(           # Translate names
-                            nc
-                            ,miRNAs
-                            ,sequenceFormat = 1
-                            ,versions = c(8, 8.1, 18, 21)
-                            )        
-```
-
-```
-## 	Following miRNA will be neglected (not listed in miRBase):
-## bpcv1-miR-B23
-## 	Following miRNA is not listed in the current miRBase version 22.0.
-## hsa-miR-128b
+> miRNAs= c("hsa-miR-128b", "hsa-miR-213", "mmu-miR-302b*", 
+            "mmu-miR-872", "ebv-miR-BART5", "bpcv1-miR-B23")
+> nc = MiRNANameConverter()              # Create MiRNANameConverter object
+> result = translateMiRNAName(           # Translate names
+                              nc
+                              ,miRNAs
+                              ,sequenceFormat = 1
+                              ,versions = c(8, 8.1, 18, 21)
+                              )        
+Following miRNA will be neglected (not listed in miRBase):
+bpcv1-miR-B23
+Following miRNA is not listed in the current miRBase version 22.0.
+hsa-miR-128b
 ```
 
 The console output shows us that one of the input values is not a miRNA 
@@ -296,19 +242,16 @@ The console output shows us that one of the input values is not a miRNA
 
 ```r
 result
-```
-
-```
-##                     mimat         input          v8.0          v8.1
-## MIMAT0000270 MIMAT0000270   hsa-miR-213   hsa-miR-213 hsa-miR-181a*
-## MIMAT0003373 MIMAT0003373 mmu-miR-302b* mmu-miR-302b* mmu-miR-302b*
-## MIMAT0003413 MIMAT0003413 ebv-miR-BART5          <NA> ebv-miR-BART5
-## MIMAT0004934 MIMAT0004934   mmu-miR-872          <NA>          <NA>
-##                        v18.0            v21.0
-## MIMAT0000270 hsa-miR-181a-3p  hsa-miR-181a-3p
-## MIMAT0003373 mmu-miR-302b-5p  mmu-miR-302b-5p
-## MIMAT0003413   ebv-miR-BART5 ebv-miR-BART5-5p
-## MIMAT0004934  mmu-miR-872-5p   mmu-miR-872-5p
+                    mimat         input          v8.0          v8.1
+MIMAT0000270 MIMAT0000270   hsa-miR-213   hsa-miR-213 hsa-miR-181a*
+MIMAT0003373 MIMAT0003373 mmu-miR-302b* mmu-miR-302b* mmu-miR-302b*
+MIMAT0003413 MIMAT0003413 ebv-miR-BART5          <NA> ebv-miR-BART5
+MIMAT0004934 MIMAT0004934   mmu-miR-872          <NA>          <NA>
+                       v18.0            v21.0
+MIMAT0000270 hsa-miR-181a-3p  hsa-miR-181a-3p
+MIMAT0003373 mmu-miR-302b-5p  mmu-miR-302b-5p
+MIMAT0003413   ebv-miR-BART5 ebv-miR-BART5-5p
+MIMAT0004934  mmu-miR-872-5p   mmu-miR-872-5p
 ```
 
 #### Attribute `description`
@@ -320,23 +263,20 @@ the `attr` command followed by `'description'`.
 
 ```r
 attr(result, 'description')
-```
-
-```
-##                 input.miRNA
-## bpcv1-miR-B23 bpcv1-miR-B23
-## ebv-miR-BART5 ebv-miR-BART5
-## hsa-miR-128b   hsa-miR-128b
-## hsa-miR-213     hsa-miR-213
-## mmu-miR-302b* mmu-miR-302b*
-## mmu-miR-872     mmu-miR-872
-##                                                                 information
-## bpcv1-miR-B23               This name is not listed in any miRBase version.
-## ebv-miR-BART5                                                            OK
-## hsa-miR-128b  This miRNA is not listed in the current miRBase version 22.0.
-## hsa-miR-213                                                              OK
-## mmu-miR-302b*                                                            OK
-## mmu-miR-872                                                              OK
+                input.miRNA
+bpcv1-miR-B23 bpcv1-miR-B23
+ebv-miR-BART5 ebv-miR-BART5
+hsa-miR-128b   hsa-miR-128b
+hsa-miR-213     hsa-miR-213
+mmu-miR-302b* mmu-miR-302b*
+mmu-miR-872     mmu-miR-872
+                                                               information
+bpcv1-miR-B23               This name is not listed in any miRBase version.
+ebv-miR-BART5                                                            OK
+hsa-miR-128b  This miRNA is not listed in the current miRBase version 22.0.
+hsa-miR-213                                                              OK
+mmu-miR-302b*                                                            OK
+mmu-miR-872                                                              OK
 ```
 
 #### Attribute `sequences`
@@ -393,26 +333,26 @@ attr(result, 'sequence')
 ```
 
 ```
-##                     mimat         input   v17.0-miRNA
-## MIMAT0000270 MIMAT0000270   hsa-miR-213 hsa-miR-181a*
-## MIMAT0003373 MIMAT0003373 mmu-miR-302b* mmu-miR-302b*
-## MIMAT0003413 MIMAT0003413 ebv-miR-BART5 ebv-miR-BART5
-## MIMAT0004934 MIMAT0004934   mmu-miR-872   mmu-miR-872
-##                        v17.0-Sequence      v19.0-miRNA
-## MIMAT0000270   ACCAUCGACCGUUGAUUGUACC  hsa-miR-181a-3p
-## MIMAT0003373  ACUUUAACAUGGGAAUGCUUUCU  mmu-miR-302b-5p
-## MIMAT0003413 CAAGGUGAAUAUAGCUGCCCAUCG ebv-miR-BART5-5p
-## MIMAT0004934    AAGGUUACUUGUUAGUUCAGG   mmu-miR-872-5p
-##                        v19.0-Sequence      v21.0-miRNA
-## MIMAT0000270   ACCAUCGACCGUUGAUUGUACC  hsa-miR-181a-3p
-## MIMAT0003373  ACUUUAACAUGGGAAUGCUUUCU  mmu-miR-302b-5p
-## MIMAT0003413 CAAGGUGAAUAUAGCUGCCCAUCG ebv-miR-BART5-5p
-## MIMAT0004934    AAGGUUACUUGUUAGUUCAGG   mmu-miR-872-5p
-##                        v21.0-Sequence
-## MIMAT0000270   ACCAUCGACCGUUGAUUGUACC
-## MIMAT0003373  ACUUUAACAUGGGAAUGCUUUCU
-## MIMAT0003413 CAAGGUGAAUAUAGCUGCCCAUCG
-## MIMAT0004934    AAGGUUACUUGUUAGUUCAGG
+                    mimat         input   v17.0-miRNA
+MIMAT0000270 MIMAT0000270   hsa-miR-213 hsa-miR-181a*
+MIMAT0003373 MIMAT0003373 mmu-miR-302b* mmu-miR-302b*
+MIMAT0003413 MIMAT0003413 ebv-miR-BART5 ebv-miR-BART5
+MIMAT0004934 MIMAT0004934   mmu-miR-872   mmu-miR-872
+                       v17.0-Sequence      v19.0-miRNA
+MIMAT0000270   ACCAUCGACCGUUGAUUGUACC  hsa-miR-181a-3p
+MIMAT0003373  ACUUUAACAUGGGAAUGCUUUCU  mmu-miR-302b-5p
+MIMAT0003413 CAAGGUGAAUAUAGCUGCCCAUCG ebv-miR-BART5-5p
+MIMAT0004934    AAGGUUACUUGUUAGUUCAGG   mmu-miR-872-5p
+                       v19.0-Sequence      v21.0-miRNA
+MIMAT0000270   ACCAUCGACCGUUGAUUGUACC  hsa-miR-181a-3p
+MIMAT0003373  ACUUUAACAUGGGAAUGCUUUCU  mmu-miR-302b-5p
+MIMAT0003413 CAAGGUGAAUAUAGCUGCCCAUCG ebv-miR-BART5-5p
+MIMAT0004934    AAGGUUACUUGUUAGUUCAGG   mmu-miR-872-5p
+                       v21.0-Sequence
+MIMAT0000270   ACCAUCGACCGUUGAUUGUACC
+MIMAT0003373  ACUUUAACAUGGGAAUGCUUUCU
+MIMAT0003413 CAAGGUGAAUAUAGCUGCCCAUCG
+MIMAT0004934    AAGGUUACUUGUUAGUUCAGG
 ```
 
 ### Retrieve all miRNAs from different miRBase versions
@@ -510,7 +450,8 @@ the `utils::write.table` function.
 #### Database information
 
 The data used in the _miRNAmeConverter_ package is obtained from the 
-[`miRBaseVersions.db`](https://github.com/StefanHaunsberger/mirbaseversions.db) annotation package.
+<a href="https://github.com/StefanHaunsberger/mirbaseversions.db" target="_blank">`miRBaseVersions.db`</a>
+annotation package.
 
 ## References {-}
 
